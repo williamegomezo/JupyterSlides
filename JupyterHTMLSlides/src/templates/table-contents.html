@@ -1,0 +1,21 @@
+<span class="slide-container__eyebrow">{{ data["eyebrow"] }}</span>
+<div class="slide-container__eyebrow-line"></div>
+<h1 class="slide-container__title">{{ data["title"] }}</h1>
+<ul class="slide-container__list">
+  {% for item in data['items'] %}
+  <li class="slide-container__list-item">
+    <a href="#{{ item.slide_id }}">
+      {{ item.indice }} {{ item.content_title }}
+    </a>
+    <ul class="slide-container__list">
+      {% for sub_item in item['slides'] %}
+      <li class="slide-container__list-item">
+        <a href="#{{ sub_item.slide_id }}">
+          {{ item.indice }}.{{ sub_item.indice }} {{ sub_item.content_title }}
+        </a>
+      </li>
+      {% endfor %}
+    </ul>
+  </li>
+  {% endfor %}
+</ul>
